@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 
+
 //include data.js
 const data = require('./data.js')
 
@@ -26,6 +27,9 @@ const PORT = process.env.PORT || 3000
 
 //For creating and using views
 app.set('view engine', 'ejs')
+
+// For css and images
+app.use(express.static('css'))
 
 //Routes for homepage, users page and schedules page
 app.get('/', (req,res) => {
@@ -56,12 +60,15 @@ app.get('/users/:id', (req, res) =>{
     if(req.params.id>=data.users.length){
         res.send(`We have only ${data.users.length} users, so the max index is ${data.users.length-1}`)
     }
+    else if(req.params.id ==='add'){
+        res.render('pages/addusers')
+    }
     else if(req.params.id<0 || isNaN(req.params.id)){
         res.send("Enter a valid input")
     }
     else{
        /*  res.send(data.users[req.params.id]) */
-       res.render('partials/indusers', {
+       res.render('pages/indusers', {
            user: data.users,
            param: req.params.id
        })
@@ -87,7 +94,7 @@ app.get('/users/:id/schedules', (req, res) =>{
             res.send("No schedules found for the given user")
         }else{
            /*  res.send(newArray) */
-           res.render('partials/indschedules', {
+           res.render('pages/indschedules', {
                schedule: newArray
            })
         }
@@ -99,7 +106,8 @@ app.get('/users/:id/schedules', (req, res) =>{
 app.post('/users', (req, res) => {
     //Validating inputs for user values
     if(req.body.firstname==null||req.body.firstname==""||regexForNumbers.test(req.body.firstname)||regexForSpecialCharacters.test(req.body.firstname)){
-        res.send("Enter a valid first name")
+        /* res.send("Enter a valid first name") */
+        console.log("Enter a valid first name")
     }
     else if(req.body.lastname==null||req.body.lastname==""||regexForNumbers.test(req.body.lastname)||regexForSpecialCharacters.test(req.body.lastname)){
         res.send("Enter a valid last name")
@@ -115,7 +123,8 @@ app.post('/users', (req, res) => {
         const password = bcrypt.hashSync(req.body.password, salt)
         req.body.password = password 
         data.users.push(req.body)
-        res.send(req.body)
+       /*  res.send(req.body) */
+        res.redirect('/users')
     }    
 })
 
@@ -140,13 +149,17 @@ app.post('/schedules', (req, res) => {
     }
     else{
         data.schedules.push(req.body)
-        res.send(req.body)
+        /* res.send(req.body) */
+        res.redirect('/schedules')
     }
    
 })
 
 //Prevent from directly accessing individual schedules
 app.get('/schedules/:id', (req,res)=>{
+    if(req.params.id==='add'){
+        res.render('pages/addschedules')
+    }
     res.send("You cannot access the individual schedules directly, you should use aany of the given users")
 })
 
