@@ -105,7 +105,7 @@ app.post('/schedules', (req, res) => {
     if(req.body.user_id==null|| req.body.user_id==""){
         res.send("User Id cannot be empty")
     }
-    else if(isNaN(req.body.user_id)){
+    else if(isNaN(req.body.user_id)||req.body.user_id >= data.users.length){
         res.send("Enter a valid user id")
     }
     else if(req.body.day==""||req.body.day==null||isNaN(req.body.day)){
@@ -123,6 +123,21 @@ app.post('/schedules', (req, res) => {
     }
    
 })
+
+//Parameterized routes for different users and schedules
+app.get('/schedules/:id', (req, res) =>{
+    /* if(req.params.id>=data.schedules.length){
+        res.send(`We have only ${data.schedules.length} schedules, so the max index is ${data.schedules.length-1}`)
+    }
+    else if(req.params.id<0 || isNaN(req.params.id)){
+        res.send("Enter a valid input")
+    }
+    else{
+        res.send(data.schedules[req.params.id])
+    } */
+    res.send("You canoot access schedules directly, access it using any particular user")
+})
+
 
 //Listen on the given port
 app.listen(PORT, () =>{
