@@ -60,7 +60,11 @@ app.get('/users/:id', (req, res) =>{
         res.send("Enter a valid input")
     }
     else{
-        res.send(data.users[req.params.id])
+       /*  res.send(data.users[req.params.id]) */
+       res.render('partials/indusers', {
+           user: data.users,
+           param: req.params.id
+       })
     }
 })
 
@@ -82,7 +86,10 @@ app.get('/users/:id/schedules', (req, res) =>{
         if(newArray.length==0){
             res.send("No schedules found for the given user")
         }else{
-            res.send(newArray)
+           /*  res.send(newArray) */
+           res.render('partials/indschedules', {
+               schedule: newArray
+           })
         }
     }
 
@@ -119,7 +126,7 @@ app.post('/schedules', (req, res) => {
     if(req.body.user_id==null|| req.body.user_id==""){
         res.send("User Id cannot be empty")
     }
-    else if(isNaN(req.body.user_id)){
+    else if(isNaN(req.body.user_id)||req.body.user_id >= data.users.length){
         res.send("Enter a valid user id")
     }
     else if(req.body.day==""||req.body.day==null||isNaN(req.body.day)){
@@ -136,6 +143,11 @@ app.post('/schedules', (req, res) => {
         res.send(req.body)
     }
    
+})
+
+//Prevent from directly accessing individual schedules
+app.get('/schedules/:id', (req,res)=>{
+    res.send("You cannot access the individual schedules directly, you should use aany of the given users")
 })
 
 //Listen on the given port

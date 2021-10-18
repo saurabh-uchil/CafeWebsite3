@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schedules</title>
+    <title>Individual Schedules</title>
 </head>
 <body>
-    <!-- header -->
+     <!-- header -->
 
     <!-- main -->
     <main>  
@@ -21,14 +21,15 @@
                 </tr> 
             </thead>
             <tbody>
-                <% for(let i=0;i<schedules.length;i++){ %>
-                <tr>
-                    <td><%= schedules[i].user_id %></td>
-                    <td><%= schedules[i].day %></td>
-                    <td><%= schedules[i].start_at %></td>
-                    <td><%= schedules[i].end_at %></td>
-                </tr>
-                <% } %>
+                <% for(let i=0;i<schedule.length;i++){ %>
+                    <tr>
+                        <td><%= schedule[i].user_id %></td>
+                        <td><%= schedule[i].day %></td>
+                        <td><%= schedule[i].start_at %></td>
+                        <td><%= schedule[i].end_at %></td>
+                    </tr>
+                    <% } %>
+                
             </tbody>
         </table>
     </main>

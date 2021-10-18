@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+    <title>Individual Users</title>
 </head>
 <body>
-    <!-- header -->
+     <!-- header -->
 
     <!-- main -->
     <main>  
@@ -21,14 +21,13 @@
                 </tr> 
             </thead>
             <tbody>
-                <% for(let i=0;i<users.length;i++){ %>
                 <tr>
-                    <td><%= users[i].firstname %></td>
-                    <td><%= users[i].lastname %></td>
-                    <td><%= users[i].email %></td>
-                    <td><%= users[i].password %></td>
+                    <td><%= user[param].firstname %></td>
+                    <td><%= user[param].lastname %></td>
+                    <td><%= user[param].email %></td>
+                    <td><%= user[param].password %></td>
                 </tr>
-                <% } %>
+                
             </tbody>
         </table>
     </main>
