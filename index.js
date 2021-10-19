@@ -13,6 +13,9 @@ const bcrypt = require('bcryptjs')
 const morgan = require('morgan') 
 app.use(morgan('dev'))
 
+//Popup
+
+
 //Middleware to parse req.body
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -107,7 +110,8 @@ app.post('/users', (req, res) => {
     //Validating inputs for user values
     if(req.body.firstname==null||req.body.firstname==""||regexForNumbers.test(req.body.firstname)||regexForSpecialCharacters.test(req.body.firstname)){
         /* res.send("Enter a valid first name") */
-        console.log("Enter a valid first name")
+        /* console.log("Enter a valid first name") */
+        /*  errormsg("Enter a valid first name")  */
     }
     else if(req.body.lastname==null||req.body.lastname==""||regexForNumbers.test(req.body.lastname)||regexForSpecialCharacters.test(req.body.lastname)){
         res.send("Enter a valid last name")
@@ -167,3 +171,4 @@ app.get('/schedules/:id', (req,res)=>{
 app.listen(PORT, () =>{
     console.log(`Port number: ${PORT}`)
 })
+

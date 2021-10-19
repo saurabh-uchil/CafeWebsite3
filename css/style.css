@@ -56,6 +56,98 @@ ul li a{
 
 /* Table */
 .infotable{
+    padding: 0 15%;
+   
+}
+
+.heading{
+    text-align: center;
+    font-size: 30px;
+}
+
+table{
+    /* border: 2px solid black; */
+    /* background: burlywood; */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead{
+    background: chartreuse;
+    color: crimson;
+}
+table thead tr th{
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.35px;
+    padding: 15px;
+    vertical-align: top;
+    border: 1px solid crimson;
+}
+
+table tbody tr td{
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.35px;
+    padding: 15px;
+    background-color: crimson;
+    color: wheat;
+    border: 1px solid chartreuse;
+    word-wrap:break-word
+}
+
+table td .pwd{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 1200px){
+   table{
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+    table thead{
+       display: none;
+       font-size: 15px;
+    }
+
+    table, table tbody, table tr, table td{
+        display: block;
+        width: 100%;
+        word-wrap:break-word;
+        font-size: 15px;
+    }
+    
+    table tr{
+        margin-bottom: 15px;
+    }
+
+    table tbody tr td{
+        text-align: right;
+        position: relative;
+    }
+
+    table td:before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        text-align: left;
+    }
+    
+    table td .pwd{
+        width: 50%;
+        margin-left: 50%;
+    }
+
+
+    
+}
+
+/* .infotable{
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -71,7 +163,7 @@ th{
     background-color: goldenrod;
     height: 40px;
     width: 80px;
-}
+} */
 
 /* Form */
 .dataform{
@@ -98,7 +190,6 @@ th{
     justify-content: space-between;
 }
 input{
-    border: 2px red solid;
     width: 50%;
     height: 30px;
 }

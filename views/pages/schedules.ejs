@@ -26,10 +26,10 @@
             <tbody>
                 <% for(let i=0;i<schedules.length;i++){ %>
                 <tr>
-                    <td><%= schedules[i].user_id %></td>
-                    <td><%= schedules[i].day %></td>
-                    <td><%= schedules[i].start_at %></td>
-                    <td><%= schedules[i].end_at %></td>
+                    <td data-label="user_id"><%= schedules[i].user_id %></td>
+                    <td data-label="day"><%= schedules[i].day %></td>
+                    <td data-label="start_at"><%= schedules[i].start_at %></td>
+                    <td data-label="end_at"><%= schedules[i].end_at %></td>
                 </tr>
                 <% } %>
             </tbody>
