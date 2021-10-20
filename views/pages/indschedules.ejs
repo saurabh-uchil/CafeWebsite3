@@ -9,9 +9,12 @@
 </head>
 <body>
      <!-- header -->
-
+     <%- include('../partials/header') %>
     <!-- main -->
     <main>  
+        <br><br>
+        <div class="infotable">
+            <h1 class="heading">Schedules for user_id:<%= userid %></h1>
         <table>
             <thead>
                 <tr>
@@ -24,16 +27,19 @@
             <tbody>
                 <% for(let i=0;i<schedule.length;i++){ %>
                     <tr>
-                        <td><%= schedule[i].user_id %></td>
-                        <td><%= schedule[i].day %></td>
-                        <td><%= schedule[i].start_at %></td>
-                        <td><%= schedule[i].end_at %></td>
+                        <td data-label="user_id"><%= schedule[i].user_id %></td>
+                        <td data-label="day"><%= schedule[i].day %></td>
+                        <td data-label="start_at"><%= schedule[i].start_at %></td>
+                        <td data-label="end_at"><%= schedule[i].end_at %></td>
                     </tr>
                     <% } %>
                 
             </tbody>
         </table>
+        </div>
+        
     </main>
     <!-- footer -->
+    <%- include('../partials/footer') %>
 </body>
 </html>

@@ -9,9 +9,11 @@
 </head>
 <body>
      <!-- header -->
-
+     <%- include('../partials/header') %>
     <!-- main -->
-    <main>  
+    <main>
+        <br><br>
+        <div class="infotable">  
         <table>
             <thead>
                 <tr>
@@ -23,15 +25,17 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><%= user[param].firstname %></td>
-                    <td><%= user[param].lastname %></td>
-                    <td><%= user[param].email %></td>
-                    <td><%= user[param].password %></td>
+                    <td data-label="firstname"><%= user[param].firstname %></td>
+                    <td data-label="lastname"><%= user[param].lastname %></td>
+                    <td data-label="email"><%= user[param].email %></td>
+                    <td data-label="password"><div class="pwd"><%= user[param].password %></td>
                 </tr>
                 
             </tbody>
         </table>
+        </div>
     </main>
     <!-- footer -->
+    <%- include('../partials/footer') %>
 </body>
 </html>

@@ -1,6 +1,7 @@
 //include express
 const express = require('express')
 const app = express()
+const alert = require('alert')
 
 
 //include data.js
@@ -33,6 +34,7 @@ app.set('view engine', 'ejs')
 
 // For css and images
 app.use(express.static('css'))
+
 
 //Routes for homepage, users page and schedules page
 app.get('/', (req,res) => {
@@ -98,7 +100,8 @@ app.get('/users/:id/schedules', (req, res) =>{
         }else{
            /*  res.send(newArray) */
            res.render('pages/indschedules', {
-               schedule: newArray
+               schedule: newArray,
+               userid: req.params.id
            })
         }
     }
@@ -110,17 +113,20 @@ app.post('/users', (req, res) => {
     //Validating inputs for user values
     if(req.body.firstname==null||req.body.firstname==""||regexForNumbers.test(req.body.firstname)||regexForSpecialCharacters.test(req.body.firstname)){
         /* res.send("Enter a valid first name") */
-        /* console.log("Enter a valid first name") */
+        alert("Enter a valid first name")
         /*  errormsg("Enter a valid first name")  */
     }
     else if(req.body.lastname==null||req.body.lastname==""||regexForNumbers.test(req.body.lastname)||regexForSpecialCharacters.test(req.body.lastname)){
-        res.send("Enter a valid last name")
+       /*  res.send("Enter a valid last name") */
+        alert("Enter a valid last name")
     }
     else if(req.body.email==null||req.body.email==""||!regexForEmail.test(req.body.email)){
-        res.send("Enter a valid email address")
+        /* res.send("Enter a valid email address") */
+        alert("Enter a valid email address")
     }
     else if(req.body.password==null||req.body.password==""){
-        res.send("Password cannot be empty")
+        /* res.send("Password cannot be empty") */
+        alert("Password cannot be empty")
     }
     else{
         const salt = bcrypt.genSaltSync(10)
@@ -137,19 +143,24 @@ app.post('/schedules', (req, res) => {
 
     //Validating inputs for schedule values
     if(req.body.user_id==null|| req.body.user_id==""){
-        res.send("User Id cannot be empty")
+       /*  res.send("User Id cannot be empty") */
+        alert("User Id cannot be empty")
     }
     else if(isNaN(req.body.user_id)||req.body.user_id >= data.users.length){
-        res.send("Enter a valid user id")
+        /* res.send("Enter a valid user id") */
+        alert("Enter a valid user id")
     }
     else if(req.body.day==""||req.body.day==null||isNaN(req.body.day)){
-        res.send("Enter a valid day")
+        /* res.send("Enter a valid day") */
+        alert("Enter a valid day")
     }
     else if(req.body.start_at==""||req.body.start_at==null){
-        res.send("Enter a valid start time")
+        /* res.send("Enter a valid start time") */
+        alert("Enter a valid start time")
     }
     else if(req.body.end_at==null||req.body.end_at==""){
-        res.send("Enter a valid end time")
+       /*  res.send("Enter a valid end time") */
+        alert("Enter a valid end time")
     }
     else{
         data.schedules.push(req.body)
