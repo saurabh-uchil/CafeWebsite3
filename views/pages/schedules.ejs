@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedules</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- header -->
+    <%- include('../partials/header') %>
+    <!-- main -->
+    <main>  
+        <br><br>
+        <div class="infotable">
+        <h1 class="heading">User Schedules</h1>
+        <form class="scheduleinteraction" method="get" action="/addschedules">
+            <label for="uid">UserId: </label>
+            <input type="text" name="uid" id="uid">
+            <button class="searchbtn">Search</button>
+            <button class="addbtn" type="submit">Add Schedules</button>
+        </form>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Schedule Id</th>
+                    <th>User Id</th>
+                    <th>Day</th>
+                    <th>Start At</th>
+                    <th>End At</th>
+                </tr> 
+            </thead>
+            <tbody>
+                <% for(let i=0;i<schedules.length;i++){ %>
+                <tr>
+                    <td data-label="schedule id"><%= schedules[i].scheduleid %></td>
+                    <td data-label="user_id"><%= schedules[i].userid %></td>
+                    <td data-label="day"><%= schedules[i].srmdirday %></td>
+                    <td data-label="start_at"><%= schedules[i].start_at %></td>
+                    <td data-label="end_at"><%= schedules[i].end_at %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        </div>
+    </main>
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+</body>
+</html>

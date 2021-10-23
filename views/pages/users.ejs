@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- header -->
+    <%- include('../partials/header') %>
+    <!-- main -->
+    <main>  
+        <br><br>
+        <div class="infotable">
+            <h1 class="heading">Users Info</h1>
+            <form class="userinteraction" method="get" action="/addusers">
+                <label for="uid">UserId: </label>
+                <input type="text" name="uid" id="uid">
+                <button class="searchbtn">Search</button>
+                <button class="addbtn" type="submit">Add Users</button>
+            </form>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr> 
+                </thead>
+                <tbody>
+                    <% for(let i=0;i<users.length;i++){ %>
+                    <tr>
+                        <td data-label="user id"><%= users[i].userid %></td>
+                        <td data-label="firstname"><%= users[i].firstname %></td>
+                        <td data-label="lastname"><%= users[i].lastname %></td>
+                        <td data-label="email"><%= users[i].email %></td>
+                        <td data-label="password" ><div class="pwd"><%= users[i].password %></div></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+    </main>
+    <!-- footer -->
+    <%- include('../partials/footer') %>
+</body>
+</html>
