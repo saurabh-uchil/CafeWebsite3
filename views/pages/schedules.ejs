@@ -15,17 +15,20 @@
         <br><br>
         <div class="infotable">
         <h1 class="heading">User Schedules</h1>
-        <form class="scheduleinteraction" method="get" action="/addschedules">
-            <label for="uid">UserId: </label>
-            <input type="text" name="uid" id="uid">
-            <button class="searchbtn">Search</button>
-            <button class="addbtn" type="submit">Add Schedules</button>
-        </form>
+        <div>
+            <form class="scheduleinteraction" method="get" action="/addschedules">
+                <label for="sid">UserId: </label>
+                <input type="text" id="sid">
+               <!--  <input class="searchbtn" type="" onclick="tableSearch()" value="Search"> -->
+                <input class="addbtn" type="submit" value="Add Schedules">
+            </form>
+            
+        </div>
+        
         <br>
-        <table>
+        <table id="descrpntable">
             <thead>
                 <tr>
-                    <th>Schedule Id</th>
                     <th>User Id</th>
                     <th>Day</th>
                     <th>Start At</th>
@@ -35,9 +38,8 @@
             <tbody>
                 <% for(let i=0;i<schedules.length;i++){ %>
                 <tr>
-                    <td data-label="schedule id"><%= schedules[i].scheduleid %></td>
                     <td data-label="user_id"><%= schedules[i].userid %></td>
-                    <td data-label="day"><%= schedules[i].srmdirday %></td>
+                    <td data-label="day"><%= schedules[i].sday %></td>
                     <td data-label="start_at"><%= schedules[i].start_at %></td>
                     <td data-label="end_at"><%= schedules[i].end_at %></td>
                 </tr>
@@ -49,4 +51,10 @@
     <!-- footer -->
     <%- include('../partials/footer') %>
 </body>
+<!-- <script>
+    function tableSearch(){
+     console.log(schedules)
+    }
+    
+</script> -->
 </html>

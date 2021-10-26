@@ -158,12 +158,30 @@ app.post('/schedules', (req, res) => {
         })
         .catch((err)=>{
             res.send(err)
-        })
-       
+        })  
     }
    
 })
 
+function userExists(id){
+    let result;
+    db.any('SELECT * FROM users WHERE id = $1', [id])
+    .then((data) =>{   
+        if(data.length == 0){
+            return true
+        }
+        else{
+           return false
+            }
+     
+     })
+    .catch((err) => {
+        return err
+    })
+    
+}
+
+console.log(userExists(6))
 
 
 //Listen on the given port

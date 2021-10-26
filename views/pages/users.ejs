@@ -17,9 +17,9 @@
             <h1 class="heading">Users Info</h1>
             <form class="userinteraction" method="get" action="/addusers">
                 <label for="uid">UserId: </label>
-                <input type="text" name="uid" id="uid">
-                <button class="searchbtn">Search</button>
-                <button class="addbtn" type="submit">Add Users</button>
+                <input type="text" id="uid">
+                <input class="searchbtn" onclick="tableSearch()" value="Search">
+                <input class="addbtn" type="submit" value="Add Users">
             </form>
             <br>
             <table>

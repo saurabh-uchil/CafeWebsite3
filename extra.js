@@ -53,3 +53,43 @@ app.get('/schedules/:id', (req,res)=>{
     }
     res.send("You cannot access the individual schedules directly, you should use aany of the given users")
 })
+
+  /* let input, filter, table, tr, td, textValue;
+
+        input = document.getElementById("sid")
+        filter = input.value
+        table = document.getElementById("descrpntable");
+        tr = table.getElementsByTagName("tr")
+        
+        for(let i =0; i<tr.length; i++){
+            td = tr[i].getElementsByTagName("td")[0]
+            if(td){
+                textValue = td.textContent || td.innerText
+                if(textValue.indexOf(filter) > -1){
+                    tr[i].style.display = ""
+                }
+                else{
+                    table.innerHTML = "<h1 style=\"text-align:center;color:darkblue\">No such userid exisits</h1>"
+                }
+            }
+        }
+        /* console.log(`${filter}`) */ 
+/* 
+        let filter = document.getElementById('sid').value
+        let table = document.getElementById('descrpntable')
+        let tr = table.getElementsByTagName('tr')
+  
+        for(let i = 0; i< tr.length; i++){
+            let td = tr[i].getElementsByTagName('td')[0]
+            
+            if(td){
+                let textvalue = td.textContent || td.innerHTML
+  
+                if(textvalue.indexOf(filter) > -1){
+                  tr[i].style.display = " ";         
+                }
+                else{
+                  tr[i].style.display = "none"; 
+                }
+            }
+        } */
