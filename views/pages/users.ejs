@@ -16,10 +16,10 @@
         <div class="infotable">
             <h1 class="heading">Users Info</h1>
             <form class="userinteraction" method="get" action="/addusers">
-                <label for="uid">UserId: </label>
-                <input type="text" id="uid">
-                <input class="searchbtn" onclick="tableSearch()" value="Search">
-                <input class="addbtn" type="submit" value="Add Users">
+              <!--   <label for="uid">UserId: </label>
+                <input type="text" id="uid"> -->
+               <!--  <input class="searchbtn" onclick="tableSearch()" value="Search"> -->
+                <input class="addbtn" type="submit" value="Add New Users">
             </form>
             <br>
             <table>
@@ -30,6 +30,7 @@
                         <th>LastName</th>
                         <th>Email</th>
                         <th>Password</th>
+                       <!--  <th>Action</th> -->
                     </tr> 
                 </thead>
                 <tbody>
@@ -40,8 +41,9 @@
                         <td data-label="lastname"><%= users[i].lastname %></td>
                         <td data-label="email"><%= users[i].email %></td>
                         <td data-label="password" ><div class="pwd"><%= users[i].password %></div></td>
+                       <!--  <td><button>View</button></td> -->
                     </tr>
-                    <% } %>
+                    <%} %>
                 </tbody>
             </table>
         </div>

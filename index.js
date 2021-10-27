@@ -181,7 +181,7 @@ function userExists(id){
     
 }
 
-console.log(userExists(6))
+/* console.log(userExists(6)) */
 
 
 //Listen on the given port
